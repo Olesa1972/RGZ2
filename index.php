@@ -18,7 +18,7 @@
 			}
 		?>
 		
-		<div class= "calcul">;
+		<div class= "calcul">
 		<form method="GET" action="index.php">
 			<input type="text" name="katet1"  placeholder="Введите значение катета 1" value="<?= htmlspecialchars($katet1) ?>">
 			 <input type="text" name="katet2" placeholder="Введите значение катета 2" value="<?= htmlspecialchars($katet2) ?>">
@@ -27,7 +27,7 @@
 		
 		<?php	
 			if ( $katet1 != '' && $katet2 != '') {
-				if (!is_numeric($katet1) || !is_numeric($katet2)){
+				if (!(INT)($katet1) || !(INT)($katet2)){
 					echo '<div class="error">';
 					$result='Допустимо вводить только числовые значения!!';
 					echo "Ошибка: $result";
@@ -37,9 +37,9 @@
 					$result='Катет не может быть отрицательным или равным нулю!!';
 					echo  "Ошибка: $result";
 					echo '</div>';
-				}elseif(is_numeric($katet1) && is_numeric($katet2) >0){
+				}elseif((INT)($katet1) && (INT)($katet2) >0){
 					$result = sqrt($katet1*$katet1 + $katet2*$katet2);
-					echo  'Гипотенуза='. number_format($result,2,',',' ');
+					echo  'Гипотенуза='. number_format($result,1,',',' ');
 				}	
 			}
 		?>
